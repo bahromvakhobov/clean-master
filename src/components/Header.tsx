@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
 const navItems = [
@@ -22,25 +22,25 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled ? "glass-header shadow-[var(--shadow-header)]" : "bg-transparent"
       }`}
     >
-      <div className="container-premium flex items-center justify-between h-16 md:h-20">
-        <a href="#hero" className="flex items-center gap-2">
-          <img src={logo} alt="Clean Master" className="h-10 w-10 rounded-full object-cover" />
-          <span className="text-lg font-bold text-foreground">
+      <div className="container-premium flex items-center justify-between h-[72px]">
+        <a href="#hero" className="flex items-center gap-2.5">
+          <img src={logo} alt="Clean Master" className="h-9 w-9 rounded-xl object-cover" />
+          <span className="text-[17px] font-extrabold text-foreground tracking-tight">
             Clean <span className="text-primary">Master</span>
             <span className="text-accent">.</span>
           </span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              className="text-[13px] font-semibold text-muted-foreground hover:text-foreground px-4 py-2 rounded-full hover:bg-muted/60 transition-all duration-300"
             >
               {item.label}
             </a>
@@ -49,41 +49,39 @@ const Header = () => {
 
         <div className="hidden md:block">
           <a
-            href="https://t.me/ssba007"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 gradient-primary text-primary-foreground px-6 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+            href="#contact"
+            className="group inline-flex items-center gap-2 gradient-primary text-primary-foreground px-6 py-2.5 rounded-full text-[13px] font-bold hover:shadow-[0_6px_20px_-4px_hsl(214_90%_52%/0.35)] transition-all duration-300"
           >
             Buyurtma berish
+            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
           </a>
         </div>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground p-1"
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {mobileOpen && (
         <div className="md:hidden glass-header border-t border-border">
-          <div className="container-premium py-4 flex flex-col gap-3">
+          <div className="container-premium py-5 flex flex-col gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-sm font-medium text-muted-foreground hover:text-primary py-2"
+                className="text-sm font-semibold text-muted-foreground hover:text-foreground py-3 px-4 rounded-xl hover:bg-muted/60 transition-all"
               >
                 {item.label}
               </a>
             ))}
             <a
-              href="https://t.me/ssba007"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gradient-primary text-primary-foreground px-6 py-2.5 rounded-full text-sm font-semibold text-center mt-2"
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="gradient-primary text-primary-foreground px-6 py-3 rounded-full text-sm font-bold text-center mt-3"
             >
               Buyurtma berish
             </a>
