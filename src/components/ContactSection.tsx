@@ -60,7 +60,7 @@ const ContactSection = () => {
 
               <div className="pt-4">
                 <p className="text-xs text-muted-foreground/60 leading-relaxed">
-                  Ish vaqti: Dushanba – Shanba, 09:00 – 20:00
+                  Ish vaqti: Dushanba – Yakshanba, 09:00 – 20:00
                 </p>
               </div>
             </div>

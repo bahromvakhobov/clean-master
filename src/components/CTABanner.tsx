@@ -15,7 +15,7 @@ const CTABanner = () => (
               Makoningizni professional darajada tozalatishga tayyormisiz?
             </h2>
             <p className="text-primary-foreground/70 text-lg mb-10 max-w-lg mx-auto">
-              Hozir bog'laning va Clean Master sifati bilan farqni his qiling
+              Hozir bog'laning va Master Clean sifati bilan farqni his qiling
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a

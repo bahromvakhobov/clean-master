@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Clock, Award, Send, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Clock, Award, Instagram, Sparkles } from "lucide-react";
 
 const HeroSection = () => (
   <section id="hero" className="relative min-h-[100vh] flex items-center overflow-hidden">
@@ -15,9 +15,12 @@ const HeroSection = () => (
       >
         <source src="/cleanmaster.mp4" type="video/mp4" />
       </video>
-      {/* Light overlay for readability — keeps video bright and visible */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/55 to-transparent" />
-      <div className="absolute inset-0 bg-background/30" />
+
+      {/* Softer overlay so video stays visible */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent" />
+
+      {/* subtle brand tint instead of heavy white wash */}
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(24,119,242,0.08),rgba(255,255,255,0.03),rgba(46,219,112,0.03))]" />
     </div>
 
     <div className="container-premium relative z-10 py-32 md:py-40">
@@ -31,7 +34,7 @@ const HeroSection = () => (
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="inline-flex items-center gap-2 bg-primary/10 text-primary px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.18em] mb-8 border border-primary/15 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 bg-white/55 text-primary px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.18em] mb-8 border border-white/40 shadow-sm"
           >
             <Sparkles size={13} />
             Professional cleaning service
@@ -52,7 +55,7 @@ const HeroSection = () => (
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.55 }}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 max-w-[540px]"
+            className="text-lg md:text-xl text-slate-700 leading-relaxed mb-10 max-w-[540px]"
           >
             Fasad, mebel, gilam, ofis va uy tozalash xizmatlari. Sifat, tezlik va ishonch — barchasi bir joyda.
           </motion.p>
@@ -70,14 +73,15 @@ const HeroSection = () => (
               Xizmat buyurtma qilish
               <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
             </a>
+
             <a
-              href="https://t.me/ssba007"
+              href="https://www.instagram.com/master_clean.uzb/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-card/80 backdrop-blur-md border border-border text-foreground px-9 py-4.5 rounded-full text-[15px] font-bold hover:border-primary/30 hover:shadow-[var(--shadow-card)] hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <Send size={15} />
-              Telegramga yozish
+              className="inline-flex items-center gap-2.5 bg-white/75 backdrop-blur-sm border border-white/60 text-foreground px-9 py-4.5 rounded-full text-[15px] font-bold hover:border-primary/30 hover:shadow-[var(--shadow-card)] hover:-translate-y-0.5 transition-all duration-300"
+              >
+              <Instagram size={16} />
+              Instagramda ko'rish
             </a>
           </motion.div>
 
@@ -85,22 +89,24 @@ const HeroSection = () => (
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex flex-wrap gap-8 text-[13px] text-muted-foreground font-medium"
+            className="flex flex-wrap gap-8 text-[13px] text-slate-700 font-medium"
           >
             <span className="flex items-center gap-2.5">
-              <span className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center">
+              <span className="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center">
                 <Award size={14} className="text-accent" />
               </span>
               7+ yillik tajriba
             </span>
+
             <span className="flex items-center gap-2.5">
-              <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+              <span className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center">
                 <Shield size={14} className="text-primary" />
               </span>
               Professional uskunalar
             </span>
+
             <span className="flex items-center gap-2.5">
-              <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+              <span className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center">
                 <Clock size={14} className="text-primary" />
               </span>
               Tez va sifatli xizmat

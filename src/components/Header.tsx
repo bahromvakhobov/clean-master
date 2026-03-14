@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight, Phone } from "lucide-react";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/master_clean_logo.png";
 
 const navItems = [
   { label: "Bosh sahifa", href: "#hero" },
@@ -30,7 +30,7 @@ const Header = () => {
         <a href="#hero" className="flex items-center gap-2.5">
           <img src={logo} alt="Clean Master" className="h-9 w-9 rounded-xl object-cover" />
           <span className="text-[17px] font-extrabold text-foreground tracking-tight">
-            Clean <span className="text-primary">Master</span>
+            Master <span className="text-primary">Clean</span>
             <span className="text-accent">.</span>
           </span>
         </a>

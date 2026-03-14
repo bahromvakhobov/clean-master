@@ -1,5 +1,5 @@
 import { Send, Instagram, Phone } from "lucide-react";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/master_clean_logo.png";
 
 const Footer = () => (
   <footer className="bg-foreground text-primary-foreground pt-20 pb-10 px-4">
@@ -9,11 +9,11 @@ const Footer = () => (
           <div className="flex items-center gap-2.5 mb-5">
             <img src={logo} alt="Clean Master" className="h-10 w-10 rounded-xl object-cover brightness-110" />
             <span className="text-lg font-extrabold tracking-tight">
-              Clean Master<span className="text-accent">.</span>
+              Master Clean<span className="text-accent">.</span>
             </span>
           </div>
           <p className="text-primary-foreground/50 text-sm leading-relaxed max-w-xs">
-            Professional cleaning service for homes, offices and exterior surfaces.
+            Uylar, ofislar va tashqi yuzalar uchun professional tozalash xizmati.
           </p>
         </div>
 
@@ -62,7 +62,19 @@ const Footer = () => (
 
       <div className="border-t border-primary-foreground/8 pt-8 text-center">
         <p className="text-xs text-primary-foreground/30 tracking-wide">
-          © {new Date().getFullYear()} Clean Master. Barcha huquqlar himoyalangan.
+          © {new Date().getFullYear()} Master Clean. Barcha huquqlar himoyalangan.
+        </p>
+        <p className="text-xs text-primary-foreground/40">
+          Websayt{" "}
+          <a
+            href="https://t.me/Bahrom_Vaxobov"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline font-medium"
+          >
+            Bahrom Vaxobov
+          </a>{" "}
+          tomonidan yaratilgan
         </p>
       </div>
     </div>
