@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Clock, Award, Send, Sparkles, Play } from "lucide-react";
+import { ArrowRight, Shield, Clock, Award, Send, Sparkles } from "lucide-react";
 
 const HeroSection = () => (
   <section id="hero" className="relative min-h-[100vh] flex items-center overflow-hidden">
@@ -15,19 +15,13 @@ const HeroSection = () => (
       >
         <source src="/cleanmaster.mp4" type="video/mp4" />
       </video>
-      {/* Multi-layer overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/30" />
-      <div className="absolute inset-0 bg-primary/[0.04]" />
+      {/* Light overlay for readability — keeps video bright and visible */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/55 to-transparent" />
+      <div className="absolute inset-0 bg-background/30" />
     </div>
 
-    {/* Decorative elements */}
-    <div className="glow-blob w-[600px] h-[600px] bg-primary top-[-200px] -left-64 z-[1]" />
-    <div className="glow-blob w-[400px] h-[400px] bg-accent bottom-0 right-[-100px] z-[1]" />
-
     <div className="container-premium relative z-10 py-32 md:py-40">
-      <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-24 items-center">
-        {/* Left */}
+      <div className="max-w-2xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -111,68 +105,6 @@ const HeroSection = () => (
               </span>
               Tez va sifatli xizmat
             </span>
-          </motion.div>
-        </motion.div>
-
-        {/* Right — floating glass cards over video */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="relative hidden lg:flex items-center justify-center min-h-[480px]"
-        >
-          {/* Large glass card */}
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-8 right-0 bg-card/85 backdrop-blur-xl border border-border/60 rounded-3xl px-7 py-5 shadow-[var(--shadow-elevated)]"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl gradient-primary flex items-center justify-center">
-                <Award size={20} className="text-primary-foreground" />
-              </div>
-              <div>
-                <p className="text-lg font-extrabold text-foreground leading-none">7+ yil</p>
-                <p className="text-xs text-muted-foreground mt-1">professional tajriba</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Center play indicator */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            className="w-20 h-20 rounded-full bg-card/30 backdrop-blur-md border border-primary-foreground/20 flex items-center justify-center cursor-pointer hover:bg-card/50 transition-all"
-          >
-            <Play size={28} className="text-primary-foreground/80 ml-1" />
-          </motion.div>
-
-          {/* Bottom-left glass card */}
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-8 left-0 bg-card/85 backdrop-blur-xl border border-border/60 rounded-3xl px-7 py-5 shadow-[var(--shadow-elevated)]"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center">
-                <Shield size={20} className="text-accent-foreground" />
-              </div>
-              <div>
-                <p className="text-lg font-extrabold text-foreground leading-none">100%</p>
-                <p className="text-xs text-muted-foreground mt-1">sifat kafolati</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Small stat badge */}
-          <motion.div
-            animate={{ y: [0, -5, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute top-1/2 left-8 -translate-y-1/2 bg-card/80 backdrop-blur-lg border border-border/50 rounded-2xl px-5 py-3 shadow-lg"
-          >
-            <p className="text-2xl font-extrabold text-primary leading-none">1000+</p>
-            <p className="text-[10px] text-muted-foreground mt-1 font-medium">mamnun mijoz</p>
           </motion.div>
         </motion.div>
       </div>

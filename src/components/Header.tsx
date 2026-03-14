@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, Phone } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
 const navItems = [
@@ -47,7 +47,14 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="tel:+998335881111"
+            className="inline-flex items-center gap-2 text-[13px] font-semibold text-muted-foreground hover:text-primary transition-colors"
+          >
+            <Phone size={14} />
+            +998 33 588 11 11
+          </a>
           <a
             href="#contact"
             className="group inline-flex items-center gap-2 gradient-primary text-primary-foreground px-6 py-2.5 rounded-full text-[13px] font-bold hover:shadow-[0_6px_20px_-4px_hsl(214_90%_52%/0.35)] transition-all duration-300"
@@ -78,6 +85,13 @@ const Header = () => {
                 {item.label}
               </a>
             ))}
+            <a
+              href="tel:+998335881111"
+              className="flex items-center gap-2 text-sm font-semibold text-primary py-3 px-4"
+            >
+              <Phone size={16} />
+              +998 33 588 11 11
+            </a>
             <a
               href="#contact"
               onClick={() => setMobileOpen(false)}

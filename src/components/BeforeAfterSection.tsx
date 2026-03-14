@@ -1,6 +1,7 @@
 import AnimatedSection from "./AnimatedSection";
 import BeforeAfterSlider from "./BeforeAfterSlider";
-import sofaImg from "@/assets/before-after-sofa.jpg";
+import beforeSofa from "@/assets/before-sofa-dirty.jpg";
+import afterSofa from "@/assets/after-sofa-clean.jpg";
 import facadeImg from "@/assets/before-after-facade.jpg";
 import carpetImg from "@/assets/before-after-carpet.jpg";
 import tileImg from "@/assets/before-after-tile.jpg";
@@ -25,11 +26,10 @@ const BeforeAfterSection = () => (
         </div>
       </AnimatedSection>
 
-      {/* Featured interactive before/after slider */}
       <AnimatedSection className="mb-10">
         <BeforeAfterSlider
-          beforeImg={sofaImg}
-          afterImg={sofaImg}
+          beforeImg={beforeSofa}
+          afterImg={afterSofa}
           serviceLabel="Mebel tozalash"
           resultLabel="Divan tozalash natijasi"
           className="h-[320px] md:h-[480px]"
@@ -40,7 +40,6 @@ const BeforeAfterSection = () => (
         </p>
       </AnimatedSection>
 
-      {/* Grid results */}
       <div className="grid sm:grid-cols-3 gap-5">
         {results.map((item, i) => (
           <AnimatedSection key={item.label} delay={i * 0.1}>
@@ -51,13 +50,11 @@ const BeforeAfterSection = () => (
                 className="w-full h-72 object-cover group-hover:scale-[1.06] transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent" />
-
               <div className="absolute top-4 left-4">
                 <span className="bg-card/90 backdrop-blur-sm text-foreground text-[11px] font-bold px-3 py-1.5 rounded-full">
                   {item.tag}
                 </span>
               </div>
-
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <p className="text-primary-foreground font-bold text-lg">{item.label}</p>
                 <div className="flex items-center gap-1.5 mt-1.5 text-primary-foreground/60 text-sm group-hover:text-primary-foreground/80 transition-colors">
