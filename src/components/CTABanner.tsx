@@ -20,7 +20,7 @@ const CTABanner = () => (
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="#contact"
-                className="group inline-flex items-center gap-2 bg-card text-foreground px-8 py-4 rounded-full font-bold hover:bg-card/95 transition-all shadow-lg text-[15px]"
+                className="group inline-flex items-center gap-2 bg-card text-foreground px-9 py-4.5 rounded-full font-bold hover:bg-card/95 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-[15px]"
               >
                 Buyurtma berish
                 <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
@@ -29,7 +29,7 @@ const CTABanner = () => (
                 href="https://t.me/ssba007"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border-2 border-primary-foreground/25 text-primary-foreground px-8 py-4 rounded-full font-bold hover:bg-primary-foreground/10 transition-colors text-[15px]"
+                className="inline-flex items-center gap-2 border-2 border-primary-foreground/25 text-primary-foreground px-9 py-4.5 rounded-full font-bold hover:bg-primary-foreground/10 hover:-translate-y-0.5 transition-all duration-300 text-[15px]"
               >
                 <Send size={15} />
                 Telegramda yozish
