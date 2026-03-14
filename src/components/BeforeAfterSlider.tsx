@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 
 interface BeforeAfterSliderProps {
@@ -23,6 +23,18 @@ const BeforeAfterSlider = ({
   const [sliderPos, setSliderPos] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
+      }
+    };
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
 
   const updatePosition = useCallback((clientX: number) => {
     if (!containerRef.current) return;
@@ -64,7 +76,7 @@ const BeforeAfterSlider = ({
       onMouseLeave={handleMouseUp}
       onTouchMove={handleTouchMove}
     >
-      {/* After image (full background) */}
+      {/* BOTTOM layer = AFTER / clean image (fully visible) */}
       <img
         src={afterImg}
         alt="After cleaning"
@@ -72,7 +84,7 @@ const BeforeAfterSlider = ({
         draggable={false}
       />
 
-      {/* Before image (clipped) */}
+      {/* TOP layer = BEFORE / dirty image (clipped by slider position) */}
       <div
         className="absolute inset-0 overflow-hidden"
         style={{ width: `${sliderPos}%` }}
@@ -80,8 +92,8 @@ const BeforeAfterSlider = ({
         <img
           src={beforeImg}
           alt="Before cleaning"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ width: `${containerRef.current ? containerRef.current.offsetWidth : 100}px`, maxWidth: 'none' }}
+          className="absolute inset-0 h-full object-cover"
+          style={{ width: containerWidth > 0 ? `${containerWidth}px` : '100vw', maxWidth: 'none' }}
           draggable={false}
         />
       </div>
@@ -131,9 +143,7 @@ const BeforeAfterSlider = ({
         onMouseDown={handleMouseDown}
         onTouchStart={handleMouseDown}
       >
-        {/* Vertical line */}
         <div className="w-[2px] h-full bg-primary-foreground/80 shadow-lg" />
-        {/* Handle circle */}
         <div className="absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/95 backdrop-blur-md border-2 border-primary shadow-[0_2px_12px_rgba(0,0,0,0.25)] flex items-center justify-center cursor-col-resize">
           <div className="flex gap-[3px]">
             <div className="w-[2px] h-4 bg-primary rounded-full" />
