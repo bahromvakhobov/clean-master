@@ -92,7 +92,7 @@ const BeforeAfterSlider = ({
       <img
         src={afterImg}
         alt="After cleaning"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-center scale-[0.9] translate-y-[10px]"
         draggable={false}
       />
 
