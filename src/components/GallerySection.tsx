@@ -1,5 +1,5 @@
 import AnimatedSection from "./AnimatedSection";
-import galleryOffice from "@/assets/gallery-office.jpg";
+import galleryOffice from "@/assets/office-cleaning.jpeg";
 import galleryCarpet from "@/assets/gallery-carpet.jpg";
 import galleryFacade from "@/assets/gallery-facade.jpg";
 import galleryLiving from "@/assets/gallery-living.jpg";

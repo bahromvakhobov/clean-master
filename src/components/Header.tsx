@@ -28,7 +28,7 @@ const Header = () => {
     >
       <div className="container-premium flex items-center justify-between h-[72px]">
         <a href="#hero" className="flex items-center gap-2.5">
-          <img src={logo} alt="Clean Master" className="h-9 w-9 rounded-xl object-cover" />
+          <img src={logo} alt="Clean Master" className="h-12 w-12 rounded-xl object-cover" />
           <span className="text-[17px] font-extrabold text-foreground tracking-tight">
             Master <span className="text-primary">Clean</span>
             <span className="text-accent">.</span>

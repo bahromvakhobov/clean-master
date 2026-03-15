@@ -9,6 +9,7 @@ import GallerySection from "@/components/GallerySection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CTABanner from "@/components/CTABanner";
 import ContactSection from "@/components/ContactSection";
+import FloatingTelegramButton  from "@/components/FloatingTelegramButton";
 import Footer from "@/components/Footer";
 
 const Index = () => (
@@ -24,6 +25,7 @@ const Index = () => (
     <TestimonialsSection />
     <CTABanner />
     <ContactSection />
+    <FloatingTelegramButton />
     <Footer />
   </div>
 );

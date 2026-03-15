@@ -31,6 +31,7 @@ const BeforeAfterSlider = ({
         setContainerWidth(containerRef.current.offsetWidth);
       }
     };
+
     updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
@@ -59,12 +60,22 @@ const BeforeAfterSlider = ({
     isDragging.current = false;
   }, []);
 
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    isDragging.current = true;
+    updatePosition(e.touches[0].clientX);
+  }, [updatePosition]);
+
   const handleTouchMove = useCallback(
     (e: React.TouchEvent) => {
+      if (!isDragging.current) return;
       updatePosition(e.touches[0].clientX);
     },
     [updatePosition]
   );
+
+  const handleTouchEnd = useCallback(() => {
+    isDragging.current = false;
+  }, []);
 
   return (
     <div
@@ -75,25 +86,31 @@ const BeforeAfterSlider = ({
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
       onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
-      {/* BOTTOM layer = AFTER / clean image (fully visible) */}
+      {/* AFTER / clean image */}
       <img
         src={afterImg}
         alt="After cleaning"
-        className="w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover object-center"
         draggable={false}
       />
 
-      {/* TOP layer = BEFORE / dirty image (clipped by slider position) */}
+      {/* BEFORE / dirty image */}
       <div
-        className="absolute inset-0 overflow-hidden"
+        className="absolute inset-y-0 left-0 overflow-hidden"
         style={{ width: `${sliderPos}%` }}
       >
         <img
           src={beforeImg}
           alt="Before cleaning"
-          className="absolute inset-0 h-full object-cover"
-          style={{ width: containerWidth > 0 ? `${containerWidth}px` : '100vw', maxWidth: 'none' }}
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{
+            width: containerWidth ? `${containerWidth}px` : "100%",
+            maxWidth: "none",
+            left: 0,
+            top: 0,
+          }}
           draggable={false}
         />
       </div>
@@ -104,6 +121,7 @@ const BeforeAfterSlider = ({
           {beforeLabel}
         </span>
       </div>
+
       <div className="absolute top-5 right-5 z-10">
         <span className="bg-accent text-accent-foreground text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
           {afterLabel}
@@ -115,7 +133,9 @@ const BeforeAfterSlider = ({
         <div className="flex items-end justify-between gap-4">
           <div>
             {serviceLabel && (
-              <p className="text-primary-foreground/60 text-sm font-medium mb-1">{serviceLabel}</p>
+              <p className="text-primary-foreground/60 text-sm font-medium mb-1">
+                {serviceLabel}
+              </p>
             )}
             {resultLabel && (
               <h3
@@ -126,6 +146,7 @@ const BeforeAfterSlider = ({
               </h3>
             )}
           </div>
+
           <a
             href="#contact"
             className="hidden md:inline-flex items-center gap-2 bg-primary-foreground/15 backdrop-blur-sm text-primary-foreground px-5 py-2.5 rounded-full text-sm font-bold hover:bg-primary-foreground/25 transition-colors border border-primary-foreground/20"
@@ -141,7 +162,7 @@ const BeforeAfterSlider = ({
         className="absolute top-0 bottom-0 z-20 flex items-center justify-center"
         style={{ left: `${sliderPos}%`, transform: "translateX(-50%)" }}
         onMouseDown={handleMouseDown}
-        onTouchStart={handleMouseDown}
+        onTouchStart={handleTouchStart}
       >
         <div className="w-[2px] h-full bg-primary-foreground/80 shadow-lg" />
         <div className="absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/95 backdrop-blur-md border-2 border-primary shadow-[0_2px_12px_rgba(0,0,0,0.25)] flex items-center justify-center cursor-col-resize">
