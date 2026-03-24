@@ -10,7 +10,7 @@ const testimonials = [
     reel: "https://www.instagram.com/reel/DVTYyVWCNvx/embed",
   },
   {
-    name: "Nodira K.",
+    name: "Nodir K.",
     service: "Gilam tozalash",
     text: "Gilamlarimiz yangidek bo'ldi! Barcha dog'lar yo'qoldi va hid ham ketdi. Narxi ham o'rinli. Rahmat!",
     initial: "N",

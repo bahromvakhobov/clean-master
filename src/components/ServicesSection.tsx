@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
 import serviceHome from "@/assets/service-home.jpg";
 import serviceOffice from "@/assets/service-office.jpg";
@@ -10,32 +11,38 @@ const services = [
   {
     img: serviceHome,
     title: "Uy tozalash",
+    slug: "uy-tozalash-toshkent",
     desc: "Uyingizni professional darajada tozalab, yangi va qulay muhit yaratamiz.",
   },
   {
     img: serviceOffice,
     title: "Ofis tozalash",
+    slug: "ofis-tozalash-toshkent",
     desc: "Ish joyingizni doimo toza va tartibli holda saqlashga yordam beramiz.",
   },
   {
     img: serviceFacade,
     title: "Fasad tozalash",
+    slug: "fasad-tozalash-toshkent",
     desc: "Binoning tashqi qismini professional uskunalar bilan yangidek ko'rinishga keltiramiz.",
   },
   {
     img: serviceSofa,
     title: "Divan tozalash",
+    slug: "divan-tozalash-toshkent",
     desc: "Mebellaringizni chuqur tozalab, dog'lar va hidlardan xalos qilamiz.",
   },
   {
     img: serviceCarpet,
     title: "Gilam tozalash",
+    slug: "gilam-tozalash-toshkent",
     desc: "Gilamlaringizni zamonaviy texnologiyalar bilan asliga qaytaramiz.",
   },
   {
     img: serviceTile,
     title: "Bruschatka / kafel",
-    desc: "Tosh va kafel yuzalarni professional tozalash bilan porlatomiz.",
+    slug: "kafel-bruschatka-tozalash-toshkent",
+    desc: "Tosh va kafel yuzalarni professional tozalash bilan porlatamiz.",
   },
 ];
 
@@ -55,20 +62,28 @@ const ServicesSection = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {services.map((service, i) => (
           <AnimatedSection key={service.title} delay={i * 0.07}>
-            <div className="group card-premium h-full cursor-default overflow-hidden rounded-2xl">
+            <Link
+              to={`/${service.slug}`}
+              className="group card-premium block h-full overflow-hidden rounded-2xl"
+            >
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={service.img}
-                  alt={service.title}
+                  alt={`${service.title} xizmati Toshkent`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
               </div>
+
               <div className="p-6">
-                <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
-                <p className="text-muted-foreground text-[15px] leading-relaxed">{service.desc}</p>
+                <h3 className="text-lg font-bold text-foreground mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground text-[15px] leading-relaxed">
+                  {service.desc}
+                </p>
               </div>
-            </div>
+            </Link>
           </AnimatedSection>
         ))}
       </div>
