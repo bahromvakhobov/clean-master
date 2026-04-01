@@ -67,7 +67,7 @@ const Footer = () => (
         <p className="text-xs text-primary-foreground/40">
           Websayt{" "}
           <a
-            href="https://t.me/Bahrom_Vaxobov"
+            href="https://www.vakhobov.uz/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:underline font-medium"
