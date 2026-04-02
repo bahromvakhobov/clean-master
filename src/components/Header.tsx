@@ -1,24 +1,30 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight, Phone } from "lucide-react";
 import logo from "@/assets/master_clean_logo.png";
 
 const navItems = [
-  { label: "Bosh sahifa", href: "#hero" },
-  { label: "Xizmatlar", href: "#services" },
-  { label: "Natijalar", href: "#results" },
-  { label: "Nega biz", href: "#why-us" },
-  { label: "Aloqa", href: "#contact" },
+  { label: "Bosh sahifa", href: "/#hero" },
+  { label: "Xizmatlar", href: "/#services" },
+  { label: "Natijalar", href: "/#results" },
+  { label: "Nega biz", href: "/#why-us" },
+  { label: "Aloqa", href: "/#contact" },
 ];
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname, location.hash]);
 
   return (
     <header
@@ -27,23 +33,27 @@ const Header = () => {
       }`}
     >
       <div className="container-premium flex items-center justify-between h-[72px]">
-        <a href="#hero" className="flex items-center gap-2.5">
-          <img src={logo} alt="Clean Master" className="h-12 w-12 rounded-xl object-cover" />
+        <Link to="/#hero" className="flex items-center gap-2.5">
+          <img
+            src={logo}
+            alt="Clean Master"
+            className="h-12 w-12 rounded-xl object-cover"
+          />
           <span className="text-[17px] font-extrabold text-foreground tracking-tight">
             Master <span className="text-primary">Clean</span>
             <span className="text-accent">.</span>
           </span>
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              to={item.href}
               className="text-[13px] font-semibold text-muted-foreground hover:text-foreground px-4 py-2 rounded-full hover:bg-muted/60 transition-all duration-300"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -55,18 +65,23 @@ const Header = () => {
             <Phone size={14} />
             +998 33 588 11 11
           </a>
-          <a
-            href="#contact"
+
+          <Link
+            to="/#contact"
             className="group inline-flex items-center gap-2 gradient-primary text-primary-foreground px-6 py-2.5 rounded-full text-[13px] font-bold hover:shadow-[0_6px_20px_-4px_hsl(214_90%_52%/0.35)] transition-all duration-300"
           >
             Buyurtma berish
-            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-          </a>
+            <ArrowRight
+              size={14}
+              className="group-hover:translate-x-0.5 transition-transform"
+            />
+          </Link>
         </div>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden text-foreground p-1"
+          aria-label="Menu"
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -76,15 +91,16 @@ const Header = () => {
         <div className="md:hidden glass-header border-t border-border">
           <div className="container-premium py-5 flex flex-col gap-1">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 onClick={() => setMobileOpen(false)}
                 className="text-sm font-semibold text-muted-foreground hover:text-foreground py-3 px-4 rounded-xl hover:bg-muted/60 transition-all"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
+
             <a
               href="tel:+998335881111"
               className="flex items-center gap-2 text-sm font-semibold text-primary py-3 px-4"
@@ -92,13 +108,14 @@ const Header = () => {
               <Phone size={16} />
               +998 33 588 11 11
             </a>
-            <a
-              href="#contact"
+
+            <Link
+              to="/#contact"
               onClick={() => setMobileOpen(false)}
               className="gradient-primary text-primary-foreground px-6 py-3 rounded-full text-sm font-bold text-center mt-3"
             >
               Buyurtma berish
-            </a>
+            </Link>
           </div>
         </div>
       )}

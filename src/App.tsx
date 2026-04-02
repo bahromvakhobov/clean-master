@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ServicePage from "./pages/ServicePage";
+import ScrollManager from "./components/ScrollManager";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollManager />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/:slug" element={<ServicePage />} />
